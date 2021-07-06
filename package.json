@@ -1,0 +1,78 @@
+{
+  "name": "exelearning-repo",
+  "title": "eXeLearning repo",
+  "version": "0.0.1",
+  "description": "Embeddable repository of eXeLearning resources",
+  "main": "index.js",
+  "keywords": [
+    "eXeLearning",
+    "education",
+    "OER",
+    "educació",
+    "cards",
+    "tables",
+    "react"
+  ],
+  "author": {
+    "name": "Catalan Educational Telematic Network (XTEC)",
+    "email": "info@xtec.cat",
+    "url": "http://clic.xtec.cat"
+  },
+  "contributors": [
+    {
+      "name": "Francesc Busquets",
+      "email": "francesc@gmail.com",
+      "url": "https://github.com/frncesc"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/projectestac/exelearning-repo"
+  },
+  "bugs": {
+    "url": "https://github.com/projectestac/exelearning-repo/issues"
+  },
+  "licenses": [
+    {
+      "type": "EUPL-1.2",
+      "url": "https://spdx.org/licenses/EUPL-1.2.html"
+    }
+  ],
+  "license": "EUPL-1.2",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/projectestac/exelearning-repo",
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "i18next": "^20.3.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "lodash": "^4.17.21",
+    "papaparse": "^5.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.0",
+    "react-markdown": "^6.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "dotenv-webpack": "^7.0.3",
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0",
+    "prop-types": "^15.7.2",
+    "terser-webpack-plugin": "^5.1.4",
+    "webpack": "^5.42.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "lint": "eslint src/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": "> 0.25%, not dead"
+}

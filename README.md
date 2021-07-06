@@ -1,2 +1,4 @@
-# exelearning-repo
-Pluggable front-end repository of eXeLearning resources
+## eXeLearning repo
+Embeddable repository of eXeLearning resources
+
+
