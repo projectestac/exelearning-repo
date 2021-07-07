@@ -19,10 +19,6 @@ const useStyles = makeStyles(_theme => ({
     flexWrap: 'wrap',
     "& button": {
       marginLeft: '-0.6rem',
-      // Params added due to a bug with material-ui 4.12:
-      width: '48px',
-      height: '48px',
-      borderRadius: '50%',
     },
   },
   twitter: {

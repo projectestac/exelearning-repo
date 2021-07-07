@@ -10,6 +10,10 @@ import ccLogo from '../assets/cclogo.png';
 const useStyles = makeStyles(theme => ({
   root: {
   },
+  title: {
+    color: theme.palette.primary.dark,
+  },
+  subtitle: {},
   backBtn: {
     marginBottom: '1rem',
   },
@@ -109,8 +113,8 @@ function Project({ project, setProjectID, settings, t, ...props }) {
         <ArrowBack className={classes['leftIcon']} />
         {t('title')}
       </Button>
-      <Typography variant="h1">{titol}</Typography>
-      <Typography variant="subtitle1">{autoria}</Typography>
+      <Typography variant="h1" className={classes.title}>{titol}</Typography>
+      <Typography variant="subtitle1" className={classes.subtitle}>{autoria}</Typography>
       <ShareButtons {...{ settings, t, ...project, link: window.location.href }} />
       <div className={classes.mainBlock}>
         {imatge &&

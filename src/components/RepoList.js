@@ -8,12 +8,16 @@ import { Typography } from '@material-ui/core';
 import { List, ViewComfy } from '@material-ui/icons';
 import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 
-const useStyles = makeStyles(_theme => ({
+const useStyles = makeStyles(theme => ({
   root: {
     '&h1': {
       fontSize: '12pt',
     },
   },
+  title: {
+    color: theme.palette.primary.dark,
+  },
+  subtitle: {},
   selectProjects: {
     marginTop: '1rem',
     marginBottom: '1rem',
@@ -29,22 +33,22 @@ const useStyles = makeStyles(_theme => ({
   },
   projectCount: {
     flexGrow: 1,
+    marginLeft: '1rem',
+    textAlign: 'right',
   }
 }));
 
-function RepoList({ projects, setProjectID, settings, t, ...props }) {
+function RepoList({ projects, setProjectID, settings, listMode, setListMode, t, ...props }) {
 
   const { logo = "", displayTitle, displaySubtitle } = settings;
   const classes = mergeClasses(props, useStyles());
-  const [listMode, setListMode] = useState(false);
 
   return (
     <div {...props} className={classes.root}>
-      {displayTitle && <Typography variant="h1">{t('title')}</Typography>}
-      {displaySubtitle && <Typography variant="subtitle1">{t('description')}</Typography>}
+      {displayTitle && <Typography variant="h1" className={classes.title}>{t('title')}</Typography>}
+      {displaySubtitle && <Typography variant="subtitle1" className={classes.subtitle}>{t('description')}</Typography>}
       <ShareButtons {...{ settings, t, titol: t('title'), descripcio: t('description'), imatge: logo, link: window.location.href }} />
       <div className={classes['infoBar']}>
-        <Typography variant="body2" className={classes['projectCount']}>{t('projects_count', { count: projects.length })}</Typography>
         <ToggleButtonGroup
           className={classes['viewMode']}
           size="small"
@@ -60,6 +64,7 @@ function RepoList({ projects, setProjectID, settings, t, ...props }) {
             <List />
           </ToggleButton>
         </ToggleButtonGroup>
+        <Typography variant="body2" className={classes['projectCount']}>{t('projects_count', { count: projects.length })}</Typography>
       </div>
       {(listMode && <PaginatedList {...{ projects, setProjectID, settings, t }} />)
         || <CardsMosaic {...{ projects, setProjectID, settings, t }} />

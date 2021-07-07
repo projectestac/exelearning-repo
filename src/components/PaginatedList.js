@@ -49,9 +49,9 @@ function PaginatedList({ projects, setProjectID, settings: _settings, t, ...prop
         page={page}
         rowsPerPage={itemsPerPage}
         rowsPerPageOptions={[10, 25, 50, 100]}
-        onChangeRowsPerPage={ev => setItemsPerPage(ev.target.value)}
+        onRowsPerPageChange={ev => setItemsPerPage(ev.target.value)}
         count={projects.length}
-        onChangePage={(_ev, p) => setPage(p)}
+        onPageChange={(_ev, p) => setPage(p)}
         labelDisplayedRows={({ from, to, count }) => { t('results_count', { from, to, count }) }}
         labelRowsPerPage={t('results_per_page')}
         backIconButtonText={t('results_page_prev')}
