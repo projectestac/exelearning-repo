@@ -34,14 +34,14 @@ const useStyles = makeStyles(_theme => ({
 
 function RepoList({ projects, setProjectID, settings, t, ...props }) {
 
-  const { logo = "" } = settings;
+  const { logo = "", displayTitle, displaySubtitle } = settings;
   const classes = mergeClasses(props, useStyles());
   const [listMode, setListMode] = useState(false);
 
   return (
     <div {...props} className={classes.root}>
-      <Typography variant="h1">{t('title')}</Typography>
-      <Typography variant="subtitle1">{t('description')}</Typography>
+      {displayTitle && <Typography variant="h1">{t('title')}</Typography>}
+      {displaySubtitle && <Typography variant="subtitle1">{t('description')}</Typography>}
       <ShareButtons {...{ settings, t, titol: t('title'), descripcio: t('description'), imatge: logo, link: window.location.href }} />
       <div className={classes['infoBar']}>
         <Typography variant="body2" className={classes['projectCount']}>{t('projects_count', { count: projects.length })}</Typography>

@@ -5,13 +5,14 @@ import { useTranslation } from 'react-i18next';
 import MainContainer from './components/MainContainer';
 import RepoList from './components/RepoList';
 import Project from './components/Project';
+import Alert from '@material-ui/lab/Alert';
 
 function App({ settings }) {
 
   const { t } = useTranslation();
   const { csv, projectKey } = settings;
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const [project, setProject] = useState(null);
 
@@ -22,10 +23,10 @@ function App({ settings }) {
       .then(projects => {
         setData(projects)
         const searchParams = new URLSearchParams(window.location.search);
-        const requestedPrj = searchParams.get(projectKey);
+        const requestedPrj = searchParams.get(projectKey);      
         const prj = findProject(requestedPrj, projects);
         if (requestedPrj && !prj)
-          console.error(`Requested unknown project ID: ${requestedPrj}`);
+          setError(new Error(t('error_unknown_id', { id: requestedPrj })));
         setProject(prj);
         updateHistoryState(prj, projectKey, true);
         window.addEventListener('popstate', ev => {
@@ -38,18 +39,19 @@ function App({ settings }) {
       })
       .catch(err => setError(err))
       .finally(() => {
-        setLoading(false)
+        setLoading(false);
       });
   }, [csv]);
 
-  function setProjectID(id) {
+  function setProjectID(id, replace = false) {
     if (data) {
       const prj = findProject(id);
       if (id && !prj) {
-        console.error(`Requested unknown project ID: ${id}`);
+        setProject(null);
+        setError(new Error(t('error_unknown_id', { id })));
         return;
       }
-      updateHistoryState(prj, projectKey);
+      updateHistoryState(prj, projectKey, replace);
       setProject(prj);
     }
   }
@@ -57,8 +59,8 @@ function App({ settings }) {
   return (
     <MainContainer {...{ settings }}>
       {
-        loading && <p>Loading...</p> ||
-        error && <p>{error.toLocaleString()}</p> ||
+        loading && <Alert severity="info">{t('loading')}</Alert> ||
+        error && <Alert severity="error">{error.toLocaleString()}</Alert> ||
         project && <Project {...{ project, setProjectID, settings, t }} /> ||
         data && <RepoList {...{ projects: data, setProjectID, settings, t }} />
       }

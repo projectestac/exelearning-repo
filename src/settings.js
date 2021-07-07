@@ -53,6 +53,8 @@ export const DEFAULT_SETTINGS = {
   shareMeta: { hash: 'eXeLearning,edu', via: 'xtec' },
   facebookId: process.env.FACEBOOK_ID || 'xxx',
   logo: process.env.LOGO || '',
+  displayTitle: process.env.DISPLAY_TITLE === 'false' ? false : true,
+  displaySubtitle: process.env.DISPLAY_SUBTITLE === 'false' ? false : true,
 }
 
 export default DEFAULT_SETTINGS;

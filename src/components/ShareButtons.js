@@ -18,20 +18,12 @@ const useStyles = makeStyles(_theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     "& button": {
-      marginLeft: '-0.8rem',
-    }
-  },
-  moodleBox: {
-    padding: '1rem',
-    marginBottom: '1rem',
-  },
-  embedBox: {
-    padding: '1rem',
-    marginBottom: '1rem',
-  },
-  radioGroup: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+      marginLeft: '-0.6rem',
+      // Params added due to a bug with material-ui 4.12:
+      width: '48px',
+      height: '48px',
+      borderRadius: '50%',
+    },
   },
   twitter: {
     color: '#01acee',
@@ -51,14 +43,10 @@ const useStyles = makeStyles(_theme => ({
   email: {
     color: '#0a5191',
   },
-  snack: {
-    position: 'absolute',
-    top: '9rem',
-  },
 }));
 
 // Google Classroom icon
-export const GClassRoomIcon = () =>
+export const GClassroomIcon = () =>
   <SvgIcon viewBox="0 0 48 48">
     <path d="M41 42H7c-2.207 0-4-1.793-4-4V10c0-2.207 1.793-4 4-4h34c2.207 0 4 1.793 4 4v28c0 2.207-1.793 4-4 4z" fill="#FFC107" />
     <path d="M7 10h34v28H7z" fill="#388E3C" /><path d="M28 36h8v2h-8zM27 20a3 3 0 11-6.002-.002A3 3 0 0127 20z" fill="#FFF" />
@@ -86,8 +74,9 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
           <a
             href={`https://twitter.com/intent/tweet?text="${E(titol)}"&url=${E(link)}${hash ? `&hashtags=${E(hash)}` : ''}${via ? `&via=${E(via)}` : ''}`}
             target="_blank"
-            rel="noopener noreferrer">
-            <IconButton className={classes.twitter} aria-label={t('share_twitter')} title={t('share_twitter')}>
+            rel="noopener noreferrer"
+            className={classes.twitter}>
+            <IconButton aria-label={t('share_twitter')} title={t('share_twitter')} color="inherit">
               <TwitterIcon />
             </IconButton>
           </a>
@@ -96,8 +85,9 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
           <a
             href={`https://www.facebook.com/dialog/feed?app_id=${facebookId}&link=${E(link)}${imatge ? `&picture=${E(imatge)}` : ''}&name=${E(titol)}${descripcio ? `&description=${E(descripcio)}` : ''}&redirect_uri=${E('https://facebook.com')}`}
             target="_blank"
-            rel="noopener noreferrer">
-            <IconButton className={classes.facebook} aria-label={t('share_facebook')} title={t('share_facebook')}>
+            rel="noopener noreferrer"
+            className={classes.facebook}>
+            <IconButton aria-label={t('share_facebook')} title={t('share_facebook')} color="inherit">
               <FacebookIcon />
             </IconButton>
           </a>
@@ -106,8 +96,9 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
           <a
             href={`https://telegram.me/share/url?url=${E(link)}&text=${E(`${titol}\n${descripcio || ''}`)}`}
             target="_blank"
-            rel="noopener noreferrer">
-            <IconButton className={classes.telegram} aria-label={t('share_telegram')} title={t('share_telegram')}>
+            rel="noopener noreferrer"
+            className={classes.telegram} >
+            <IconButton aria-label={t('share_telegram')} title={t('share_telegram')} color="inherit">
               <TelegramIcon />
             </IconButton>
           </a>}
@@ -115,8 +106,9 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
           <a
             href={`https://api.whatsapp.com/send?text=${E(`${titol}\n${link}`)}`}
             target="_blank"
-            rel="noopener noreferrer">
-            <IconButton className={classes.whatsapp} aria-label={t('share_whatsapp')} title={t('share_whatsapp')}>
+            rel="noopener noreferrer"
+            className={classes.whatsapp} >
+            <IconButton aria-label={t('share_whatsapp')} title={t('share_whatsapp')} color="inherit">
               <WhatsAppIcon />
             </IconButton>
           </a>
@@ -125,8 +117,9 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
           <a
             href={`https://pinterest.com/pin/create/button/?url=${E(link)}&media=${E(imatge)}&description=${E(titol)}`}
             target="_blank"
-            rel="noopener noreferrer">
-            <IconButton className={classes.pinterest} aria-label={t('share_pinterest')} title={t('share_pinterest')}>
+            rel="noopener noreferrer"
+            className={classes.pinterest} >
+            <IconButton aria-label={t('share_pinterest')} title={t('share_pinterest')} color="inherit">
               <PinterestIcon />
             </IconButton>
           </a>
@@ -135,8 +128,9 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
           <a
             href={`mailto:?subject=${E(titol)}&body=${E(emailBody || `${titol}\n\n${descripcio || ''}\n\n${link}`)}`}
             target="_blank"
-            rel="noopener noreferrer">
-            <IconButton className={classes.email} aria-label={t('share_email')} title={t('share_email')} >
+            rel="noopener noreferrer"
+            className={classes.email}>
+            <IconButton aria-label={t('share_email')} title={t('share_email')} color="inherit">
               <EmailIcon />
             </IconButton>
           </a>
@@ -147,7 +141,7 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
             target="_blank"
             rel="noopener noreferrer">
             <IconButton aria-label={t('share_classroom')} title={t('share_classroom')} >
-              <GClassRoomIcon />
+              <GClassroomIcon />
             </IconButton>
           </a>
         }

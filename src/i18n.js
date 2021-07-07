@@ -17,6 +17,7 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
           translation: {
             title: "eXeLearning library",
             description: "Collection of open educational resources created with eXeLearning",
+            loading: "Loading data...",
             projects_count: "Found {{count}} project",
             projects_count_plural: "Found {{count}} projects",
             view_mode: "View mode",
@@ -47,12 +48,14 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
             share_pinterest: "Share on Pinterest",
             share_email: "Send by e-mail",
             share_classroom: "Add to Google Classroom",
+            error_unknown_id: "No project exists with id \"{{id}}\"",
           },
         },
         ca: {
           translation: {
             title: "Biblioteca eXeLearning",
             description: "Recull de recursos educatius oberts creats amb eXeLearning",
+            loading: "S'estan carregant les dades...",
             projects_count: "S'ha trobat {{count}} projecte",
             projects_count_plural: "S'han trobat {{count}} projectes",
             view_mode: "Tipus de visualització",
@@ -83,12 +86,14 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
             share_pinterest: "Comparteix a Pinterest",
             share_email: "Envia per correu electrònic",
             share_classroom: "Afegeix a Google Classroom",
+            error_unknown_id: "No existeix cap projecte amb l'identificador \"{{id}}\"",
           },
         },
         es: {
           translation: {
             title: "Biblioteca eXeLearning",
             description: "Colección de recursos educativos abiertos creados con eXeLearning",
+            loading: "Cargando datos...",
             projects_count: "Se ha encontrado {{count}} proyecto",
             projects_count_plural: "Se han encontrado {{count}} proyectos",
             view_mode: "Tipo de visualización",
@@ -119,6 +124,7 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
             share_pinterest: "Compartir en Pinterest",
             share_email: "Enviar por correo electrónico",
             share_classroom: "Añadir a Google Classroom",
+            error_unknown_id: "No existe ningún proyecto con el identificador \"{{id}}\"",
           },
         },
       },

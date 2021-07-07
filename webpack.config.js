@@ -107,4 +107,9 @@ module.exports = {
       }),
     ],
   },
+  performance: {
+    // Avoid "big asset" warnings
+    maxAssetSize: 2000000,
+    maxEntrypointSize: 2000000,
+  },
 };

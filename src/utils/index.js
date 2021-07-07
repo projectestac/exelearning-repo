@@ -33,7 +33,7 @@ export function loadGoogleFont(fontName = 'Roboto', weights = '300,400,500,700')
 export function parseStringSettings(data = {}) {
   return Object.keys(data).reduce((result, k) => {
     const v = data[k];
-    result[k] = /^[{[]/.test(v) ? JSON.parse(v) : v;
+    result[k] = /^[{[]/.test(v) ? JSON.parse(v) : v === 'true' ? true : v === 'false' ? false : v;
     return result;
   }, {});
 }
