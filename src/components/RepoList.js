@@ -15,9 +15,11 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    color: theme.palette.primary.dark,
+    color: `${theme.palette.primary.dark}`,
   },
-  subtitle: {},
+  //subtitle: {
+  //  color: 'unset !important',
+  //},
   selectProjects: {
     marginTop: '1rem',
     marginBottom: '1rem',

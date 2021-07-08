@@ -20,7 +20,7 @@ export function loadGoogleFont(fontName = 'Roboto', weights = '300,400,500,700')
   const link = document.createElement("link");
   link.type = "text/css";
   link.rel = "stylesheet";
-  link.href = `http://fonts.googleapis.com/css?family=${fontName}:${weights}&display=swap`;
+  link.href = `https://fonts.googleapis.com/css?family=${fontName}:${weights}&display=swap`;
   document.head.appendChild(link);
 }
 

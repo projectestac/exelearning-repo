@@ -11,6 +11,9 @@ coverage
 # dev notes
 notes
 
+# special test
+test/bexe
+
 # Dotenv environment variables
 .env
 .env.development

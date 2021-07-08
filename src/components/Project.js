@@ -11,9 +11,11 @@ const useStyles = makeStyles(theme => ({
   root: {
   },
   title: {
-    color: theme.palette.primary.dark,
+    color: `${theme.palette.primary.dark}`,
   },
-  subtitle: {},
+  //subtitle: {
+  //  color: 'unset !important',
+  //},
   backBtn: {
     marginBottom: '1rem',
   },
@@ -53,6 +55,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: '80%',
     },
+    //"& h1, h2, h3, h4, h5, h6, a": {
+    //  color: 'unset !important',
+    //}
   },
   dataCard: {
     borderCollapse: 'collapse',
