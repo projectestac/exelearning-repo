@@ -62,7 +62,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: `${pkg.name}.min.js`,
   },
-  // devtool: 'source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {

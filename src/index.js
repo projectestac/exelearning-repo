@@ -3,7 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import merge from 'lodash/merge';
-import App from './App';
+//import App from './App';
+import './WCRoot';
 import { parseStringSettings, loadGoogleFont } from './utils';
 import i18nInit from './i18n';
 import DEFAULT_SETTINGS from './settings';
@@ -12,7 +13,7 @@ import DEFAULT_SETTINGS from './settings';
 loadGoogleFont('Roboto');
 loadGoogleFont('Open Sans');
 
-const COMPONENT_ID = process.env.COMPONENT_ID || 'fitxes';
+const COMPONENT_ID = process.env.COMPONENT_ID || 'exelearning-repo';
 
 // Hook main react component into container
 window.addEventListener('load', () => {
@@ -22,9 +23,6 @@ window.addEventListener('load', () => {
   else {
     const settings = merge(DEFAULT_SETTINGS, parseStringSettings(container.dataset));
     i18nInit(settings);
-    ReactDOM.render(
-      <App {...{ settings }} />,
-      container
-    );
+    ReactDOM.render(<exelearning-repo data-settings={JSON.stringify(settings)}></exelearning-repo>, container);
   }
 });
