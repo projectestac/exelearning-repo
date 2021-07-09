@@ -1,8 +1,8 @@
 {
   "name": "exelearning-repo",
   "title": "eXeLearning repo",
-  "version": "1.0.1",
-  "description": "Embeddable repository of eXeLearning resources",
+  "version": "1.0.2",
+  "description": "Embeddable front-end for a repository of eXeLearning resources",
   "main": "index.js",
   "keywords": [
     "eXeLearning",
@@ -58,6 +58,7 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@svgr/webpack": "^5.5.0",
     "babel-loader": "^8.2.2",
     "dotenv-webpack": "^7.0.3",
     "eslint": "^7.30.0",

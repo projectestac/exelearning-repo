@@ -1,7 +1,44 @@
+/*!
+ *  File    : i18n.js
+ *  Created : 2021-07-06
+ *  By      : Francesc Busquets <francesc@gmail.com>
+ *
+ *  eXeLearning repo
+ *  Embeddable front-end for a repository of eXeLearning resources
+ *  https://projectes.xtec.cat/exelearning
+ *
+ *  @source https://github.com/projectestac/exelearning-repo
+ *
+ *  @license EUPL-1.2
+ *  @licstart
+ *  (c) 2021 Educational Telematic Network of Catalonia (XTEC)
+ *
+ *  Licensed under the EUPL, Version 1.2 or -as soon they will be approved by
+ *  the European Commission- subsequent versions of the EUPL (the "Licence");
+ *  You may not use this work except in compliance with the Licence.
+ *
+ *  You may obtain a copy of the Licence at:
+ *  https://joinup.ec.europa.eu/software/page/eupl
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the Licence is distributed on an "AS IS" basis, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ *  Licence for the specific language governing permissions and limitations
+ *  under the Licence.
+ *  @licend
+ *  @module
+ */
+
 import i18n from 'i18next';
 import LngDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 
+/**
+ * Initializes the i18n system
+ * See https://www.i18next.com/overview/api for detailed options
+ * @param {object} options
+ * @returns {object} - the [i18n](https://www.i18next.com) main object
+ */
 export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
   return i18n
     .use(LngDetector)
@@ -49,6 +86,9 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
             share_email: "Send by e-mail",
             share_classroom: "Add to Google Classroom",
             error_unknown_id: "No project exists with id \"{{id}}\"",
+            error_no_source: "The CSV file location has not been specified",
+            error_network: "Unable to download data: {{code}} {{text}}",
+            error_bad_data: "Incorrect data",
           },
         },
         ca: {
@@ -87,6 +127,9 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
             share_email: "Envia per correu electrònic",
             share_classroom: "Afegeix a Google Classroom",
             error_unknown_id: "No existeix cap projecte amb l'identificador \"{{id}}\"",
+            error_no_source: "No s'ha especificat la ubicació del fitxer CSV",
+            error_network: "No es poden llegir les dades: {{code}} {{text}}",
+            error_bad_data: "Dades incorrectes",
           },
         },
         es: {
@@ -125,6 +168,9 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
             share_email: "Enviar por correo electrónico",
             share_classroom: "Añadir a Google Classroom",
             error_unknown_id: "No existe ningún proyecto con el identificador \"{{id}}\"",
+            error_no_source: "No se ha especificado la ubicación del archivo CSV",
+            error_network: "No se han podido descargar los datos: {{code}} {{text}}",
+            error_bad_data: "Datos incorrectos",
           },
         },
       },

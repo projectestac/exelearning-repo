@@ -1,14 +1,45 @@
+/*!
+ *  File    : components/ShareButtons.js
+ *  Created : 2021-07-06
+ *  By      : Francesc Busquets <francesc@gmail.com>
+ *
+ *  eXeLearning repo
+ *  Embeddable front-end for a repository of eXeLearning resources
+ *  https://projectes.xtec.cat/exelearning
+ *
+ *  @source https://github.com/projectestac/exelearning-repo
+ *
+ *  @license EUPL-1.2
+ *  @licstart
+ *  (c) 2021 Educational Telematic Network of Catalonia (XTEC)
+ *
+ *  Licensed under the EUPL, Version 1.2 or -as soon they will be approved by
+ *  the European Commission- subsequent versions of the EUPL (the "Licence");
+ *  You may not use this work except in compliance with the Licence.
+ *
+ *  You may obtain a copy of the Licence at:
+ *  https://joinup.ec.europa.eu/software/page/eupl
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the Licence is distributed on an "AS IS" basis, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ *  Licence for the specific language governing permissions and limitations
+ *  under the Licence.
+ *  @licend
+ *  @module
+ */
+
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { mergeClasses } from '../utils';
 import IconButton from '@material-ui/core/IconButton';
-import SvgIcon from '@material-ui/core/SvgIcon';
 import EmailIcon from '@material-ui/icons/Email';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import TelegramIcon from '@material-ui/icons/Telegram';
 import PinterestIcon from '@material-ui/icons/Pinterest';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
+import ClassroomIcon from '../assets/classroom.svg';
 
 const useStyles = makeStyles(_theme => ({
   root: {
@@ -19,6 +50,10 @@ const useStyles = makeStyles(_theme => ({
     flexWrap: 'wrap',
     "& button": {
       marginLeft: '-0.6rem',
+    },
+    "& svg": {
+      width: '24px',
+      height: '24px',
     },
   },
   twitter: {
@@ -41,20 +76,15 @@ const useStyles = makeStyles(_theme => ({
   },
 }));
 
-// Google Classroom icon
-export const GClassroomIcon = () =>
-  <SvgIcon viewBox="0 0 48 48">
-    <path d="M41 42H7c-2.207 0-4-1.793-4-4V10c0-2.207 1.793-4 4-4h34c2.207 0 4 1.793 4 4v28c0 2.207-1.793 4-4 4z" fill="#FFC107" />
-    <path d="M7 10h34v28H7z" fill="#388E3C" /><path d="M28 36h8v2h-8zM27 20a3 3 0 11-6.002-.002A3 3 0 0127 20z" fill="#FFF" />
-    <path d="M18 23a1.999 1.999 0 11-4 0 1.999 1.999 0 114 0z" fill="#A5D6A7" />
-    <path d="M7 10h34v2H7z" fill="#2E7D32" /><path d="M36 38h-8l4 4h8z" fill="#FFAB00" />
-    <path d="M34 23a1.999 1.999 0 11-4 0 1.999 1.999 0 114 0zM37 28.688c0-.446-.164-.875-.469-1.2C35.84 26.75 34.363 26 32 26c-2.363 0-3.84.75-4.531 1.488a1.747 1.747 0 00-.469 1.2V30h10zM21 28.688c0-.446-.164-.875-.469-1.2C19.84 26.75 18.363 26 16 26c-2.363 0-3.84.75-4.531 1.488a1.747 1.747 0 00-.469 1.2V30h10z" fill="#A5D6A7" />
-    <path d="M30 27.742c0-.535-.195-1.047-.563-1.437C28.605 25.418 26.837 24 24 24c-2.836 0-4.605 1.418-5.438 2.305A2.08 2.08 0 0018 27.742V30h12z" fill="#FFF" />
-  </SvgIcon>;
-
 const E = encodeURIComponent;
 
-export default function ShareButtons({ link, titol, descripcio, imatge, emailBody = null, settings, t, ...props }) {
+/**
+ * This component encapsulates buttons for sharing an eXeLearning project on different social networks
+ * The `shareSites` allows to enable or disable specific social networks
+ * @param {object} params
+ * @returns 
+ */
+function ShareButtons({ link, titol, descripcio, imatge, emailBody = null, settings, t, ...props }) {
 
   const {
     shareSites: { twitter, facebook, telegram, whatsapp, pinterest, email, classroom },
@@ -137,7 +167,7 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
             target="_blank"
             rel="noopener noreferrer">
             <IconButton aria-label={t('share_classroom')} title={t('share_classroom')} >
-              <GClassroomIcon />
+              <ClassroomIcon />
             </IconButton>
           </a>
         }
@@ -145,3 +175,5 @@ export default function ShareButtons({ link, titol, descripcio, imatge, emailBod
     </div>
   );
 }
+
+export default ShareButtons;

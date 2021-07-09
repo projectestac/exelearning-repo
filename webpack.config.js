@@ -38,31 +38,23 @@ ${pkg.repository.url}
  */
 const assetRules = [
   {
-    test: /\.css$/,
-    type: 'asset/source',
-  },
-  {
     test: /\.svg$/,
-    type: 'asset/source',
+    use: ['@svgr/webpack'],    
   },
   {
     test: /\.png$/,
-    type: 'asset/inline',
-  },
-  {
-    test: /\.mp3$/,
     type: 'asset/inline',
   },
 ];
 
 module.exports = {
   mode: 'production',
-  entry: './src',
+  entry: './src/ExelearningRepo.js',
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: `${pkg.name}.min.js`,
   },
-  devtool: 'source-map',
+  //devtool: 'source-map',
   module: {
     rules: [
       {

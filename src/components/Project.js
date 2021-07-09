@@ -1,3 +1,34 @@
+/*!
+ *  File    : components/Project.js
+ *  Created : 2021-07-06
+ *  By      : Francesc Busquets <francesc@gmail.com>
+ *
+ *  eXeLearning repo
+ *  Embeddable front-end for a repository of eXeLearning resources
+ *  https://projectes.xtec.cat/exelearning
+ *
+ *  @source https://github.com/projectestac/exelearning-repo
+ *
+ *  @license EUPL-1.2
+ *  @licstart
+ *  (c) 2021 Educational Telematic Network of Catalonia (XTEC)
+ *
+ *  Licensed under the EUPL, Version 1.2 or -as soon they will be approved by
+ *  the European Commission- subsequent versions of the EUPL (the "Licence");
+ *  You may not use this work except in compliance with the Licence.
+ *
+ *  You may obtain a copy of the Licence at:
+ *  https://joinup.ec.europa.eu/software/page/eupl
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the Licence is distributed on an "AS IS" basis, WITHOUT
+ *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ *  Licence for the specific language governing permissions and limitations
+ *  under the Licence.
+ *  @licend
+ *  @module
+ */
+
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { mergeClasses } from '../utils';
@@ -8,14 +39,9 @@ import ReactMarkdown from 'react-markdown';
 import ccLogo from '../assets/cclogo.png';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-  },
   title: {
     color: `${theme.palette.primary.dark}`,
   },
-  //subtitle: {
-  //  color: 'unset !important',
-  //},
   backBtn: {
     marginBottom: '1rem',
   },
@@ -55,9 +81,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       width: '80%',
     },
-    //"& h1, h2, h3, h4, h5, h6, a": {
-    //  color: 'unset !important',
-    //}
   },
   dataCard: {
     borderCollapse: 'collapse',
@@ -106,20 +129,24 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * Component for displaying a single eXeLearning project
+ * @component
+ * @param {object} params
+ */
 function Project({ project, setProjectID, settings, t, ...props }) {
 
-  // eslint-disable-next-line no-unused-vars
-  const { area, datadecreacio, autoria, descripcio, idioma, elp, etapa, etiquetes, id, imatge, llicencia, linkllicencia = '', recurs, scorm, titol } = project;
+  const { area, datadecreacio, autoria, descripcio, idioma, elp, etapa, etiquetes, imatge, llicencia, linkllicencia = '', recurs, scorm, titol } = project;
   const classes = mergeClasses(props, useStyles());
 
   return (
-    <div {...props} className={classes.root}>
+    <div {...props}>
       <Button className={classes.backBtn} onClick={() => setProjectID(null)}>
-        <ArrowBack className={classes['leftIcon']} />
+        <ArrowBack className={classes.leftIcon} />
         {t('title')}
       </Button>
       <Typography variant="h1" className={classes.title}>{titol}</Typography>
-      <Typography variant="subtitle1" className={classes.subtitle}>{autoria}</Typography>
+      <Typography variant="subtitle1">{autoria}</Typography>
       <ShareButtons {...{ settings, t, ...project, link: window.location.href }} />
       <div className={classes.mainBlock}>
         {imatge &&
