@@ -139,7 +139,7 @@ function Project({ project, setProjectID, settings, t, ...props }) {
 
   const { area, datadecreacio, autoria, descripcio, idioma, elp, etapa, etiquetes, imatge, llicencia, linkllicencia = '', recurs, scorm, titol } = project;
   const classes = mergeClasses(props, useStyles());
-  const pageTitle = `${titol} | ${t('titol')}`;
+  const pageTitle = `${titol} | ${t('title')}`;
 
   // See: https://schema.org/LearningResource
   const sd = {
