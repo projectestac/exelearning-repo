@@ -32,6 +32,7 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { mergeClasses } from '../utils';
+import SEO from './SEO';
 import ShareButtons from './ShareButtons';
 import PaginatedList from './PaginatedList';
 import CardsMosaic from './CardsMosaic';
@@ -81,6 +82,7 @@ function RepoList({ projects, setProjectID, settings, listMode, setListMode, t, 
 
   return (
     <div {...props} className={classes.root}>
+      <SEO {...{ t, title: t('title'), author: t('author'), description: t('description'), lang: t.lang, thumbnail: logo }}></SEO>
       {displayTitle && <Typography variant="h1" className={classes.title}>{t('title')}</Typography>}
       {displaySubtitle && <Typography variant="subtitle1">{t('description')}</Typography>}
       <ShareButtons {...{ settings, t, titol: t('title'), descripcio: t('description'), imatge: logo, link: window.location.href }} />

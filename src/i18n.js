@@ -54,6 +54,7 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
           translation: {
             title: "eXeLearning library",
             description: "Collection of open educational resources created with eXeLearning",
+            author: "Catalonia Department of Education",
             loading: "Loading data...",
             projects_count: "Found {{count}} project",
             projects_count_plural: "Found {{count}} projects",
@@ -95,6 +96,7 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
           translation: {
             title: "Biblioteca eXeLearning",
             description: "Recull de recursos educatius oberts creats amb eXeLearning",
+            author: "Departament d'Educació de la Generalitat de Catalunya",
             loading: "S'estan carregant les dades...",
             projects_count: "S'ha trobat {{count}} projecte",
             projects_count_plural: "S'han trobat {{count}} projectes",
@@ -136,6 +138,7 @@ export default function i18nInit({ langKey = 'lang', langDefault = 'en' }) {
           translation: {
             title: "Biblioteca eXeLearning",
             description: "Colección de recursos educativos abiertos creados con eXeLearning",
+            author: "Departamento de Educación de la Generalitat de Catalunya",
             loading: "Cargando datos...",
             projects_count: "Se ha encontrado {{count}} proyecto",
             projects_count_plural: "Se han encontrado {{count}} proyectos",

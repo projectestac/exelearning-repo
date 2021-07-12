@@ -52,7 +52,7 @@ import i18nInit from './i18n';
  * https://stackoverflow.com/a/56516753/3896566
  * 
  */
-class ExelearningRepo extends HTMLElement {
+export default class ExelearningRepo extends HTMLElement {
 
   connectedCallback() {
 
@@ -91,6 +91,3 @@ class ExelearningRepo extends HTMLElement {
       mountPoint);
   }
 }
-
-// declare the new element type
-customElements.define('exelearning-repo', ExelearningRepo);

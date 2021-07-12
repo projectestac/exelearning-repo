@@ -35,6 +35,7 @@ import { mergeClasses } from '../utils';
 import ShareButtons from './ShareButtons';
 import { Button, IconButton, Typography } from '@material-ui/core';
 import { PlayArrow, PlayCircleFilled, CloudDownload, ArrowBack } from '@material-ui/icons';
+import SEO from './SEO';
 import ReactMarkdown from 'react-markdown';
 import ccLogo from '../assets/cclogo.png';
 
@@ -138,9 +139,26 @@ function Project({ project, setProjectID, settings, t, ...props }) {
 
   const { area, datadecreacio, autoria, descripcio, idioma, elp, etapa, etiquetes, imatge, llicencia, linkllicencia = '', recurs, scorm, titol } = project;
   const classes = mergeClasses(props, useStyles());
+  const pageTitle = `${titol} | ${t('titol')}`;
+
+  // See: https://schema.org/LearningResource
+  const sd = {
+    '@context': 'https://schema.org/',
+    '@type': 'LearningResource',
+    name: titol,
+    teaches: area,
+    educationalLevel: etapa,
+    learningResourceType: 'learning activity',
+    author: autoria,
+    description: descripcio,
+    inLanguage: idioma,
+    thumbnailUrl: imatge,
+    url: recurs,
+  };
 
   return (
     <div {...props}>
+      <SEO {...{ t, title: pageTitle, author: autoria, description: descripcio, lang: idioma, thumbnail: imatge, sd }}></SEO>
       <Button className={classes.backBtn} onClick={() => setProjectID(null)}>
         <ArrowBack className={classes.leftIcon} />
         {t('title')}

@@ -1,9 +1,9 @@
 {
   "name": "exelearning-repo",
   "title": "eXeLearning repo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Embeddable front-end for a repository of eXeLearning resources",
-  "main": "index.js",
+  "main": "src/index.js",
   "keywords": [
     "eXeLearning",
     "education",
@@ -51,6 +51,7 @@
     "papaparse": "^5.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-i18next": "^11.11.1",
     "react-markdown": "^6.0.2"
   },
@@ -65,7 +66,7 @@
     "eslint-plugin-react": "^7.24.0",
     "prop-types": "^15.7.2",
     "terser-webpack-plugin": "^5.1.4",
-    "webpack": "^5.43.0",
+    "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
