@@ -60,6 +60,7 @@ function App({ settings }) {
   const [data, setData] = useState(null);
   const [project, setProject] = useState(null);
   const [listMode, setListMode] = useState(false);
+  const [filters, setFilters] = useState({ language: '', subject: '', level: '', text: '', textMatches: [] });
 
   const findProject = (id, projects = data) => id && projects && projects.find(d => d.id === id) || null;
 
@@ -116,7 +117,7 @@ function App({ settings }) {
         loading && <Alert severity="info">{t('loading')}</Alert> ||
         error && <Alert severity="error">{error.toLocaleString()}</Alert> ||
         project && <Project {...{ project, setProjectID, settings, t }} /> ||
-        data && <RepoList {...{ projects: data, setProjectID, settings, listMode, setListMode, t }} />
+        data && <RepoList {...{ projects: data, setProjectID, settings, listMode, setListMode, filters, setFilters, t }} />
       }
     </div>
   );

@@ -29,6 +29,8 @@
  *  @module
  */
 
+import STOP_WORDS from './stopwords.json';
+
 /**
  * Combines a potential `className` field passed in `props` with the element
  * class name specified in `classes.root`
@@ -83,4 +85,43 @@ export function updateHistoryState(project, projectKey, replace = false) {
   searchParams.set(projectKey, id || '');
   url.search = searchParams.toString();
   window.history[replace ? 'replaceState' : 'pushState']({ ...window.history.state, [projectKey]: id }, document.title, url);
+}
+
+/**
+ * Returns a large string with all single words in a text fragment, excluding those defined as "stop words"
+ * for the specified language.
+ * Useful for full text search engines
+ * @param {string} text - The text fragment to process
+ * @param {string} lang - The code of the language to check for stopwords
+ * @returns string - A long string with all words, separed by whitespaces, ignoring duplicates and excluding stopwords.
+ */
+export function getTextTokens(text, lang) {
+  text = text
+    // Remove URLS
+    .replace(/https?:[-/.\w?=#&%@]+/g, '')
+    // Remove ISO dates
+    .replace(/\d{4}-\d{2}-\d{2}T[-\w.:]+/g, '')
+    // Take symbols as separators
+    .replace(/[-_\s(){}[\]#*<>,.;:¿?/'@~=+\\|¡!"£$€^&`´]+/g, ' ')
+    // Convert to lower case
+    .toLowerCase();
+
+  // Convert text to an array of unique words
+  const tokens = Array.from(new Set(text.split(' ')))
+    // Exclude stopwords and single chars
+    .filter(token => token.length > 1 && !STOP_WORDS[lang].includes(token))
+    // Sort list
+    .sort();
+
+  return tokens.join(' ');
+}
+
+/**
+ * Checks id the provided text is a 'stopword' for the specified language
+ * @param {string} word - The word to check
+ * @param {string} lang - The language to use
+ * @returns boolean - `true` if it's a 'stopword'
+ */
+export function isStopWord(word='', lang){
+  return STOP_WORDS[lang].includes(word.trim().toLowerCase());
 }

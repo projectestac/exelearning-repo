@@ -29,14 +29,15 @@
  *  @module
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { mergeClasses } from '../utils';
 import SEO from './SEO';
 import ShareButtons from './ShareButtons';
 import PaginatedList from './PaginatedList';
 import CardsMosaic from './CardsMosaic';
-import { Typography } from '@material-ui/core';
+import SelectProjects from './SelectProjects';
+import { Typography, Paper } from '@material-ui/core';
 import { List, ViewComfy } from '@material-ui/icons';
 import { ToggleButtonGroup, ToggleButton } from '@material-ui/lab';
 
@@ -52,6 +53,7 @@ const useStyles = makeStyles(theme => ({
   selectProjects: {
     marginTop: '1rem',
     marginBottom: '1rem',
+    maxWidth: '1200px',
   },
   infoBar: {
     display: 'flex',
@@ -75,10 +77,19 @@ const useStyles = makeStyles(theme => ({
  * @component
  * @param {object} params 
  */
-function RepoList({ projects, setProjectID, settings, listMode, setListMode, t, ...props }) {
+function RepoList({ projects, setProjectID, settings, listMode, setListMode, filters, setFilters, t, ...props }) {
 
   const { logo = "", displayTitle, displaySubtitle } = settings;
   const classes = mergeClasses(props, useStyles());
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  useEffect(() => {
+    setFilteredProjects(projects.filter(prj => (
+      !filters.language || prj?.idioma?.includes(filters.language))
+      && (!filters.subject || prj?.area?.includes(t(`subj_${filters.subject}`)))
+      && (!filters.level || prj?.etapa?.includes(t(`level_${filters.level}`)))
+      && (!filters.text || filters?.textMatches?.includes(prj.id))));
+  }, [filters])
 
   return (
     <div {...props} className={classes.root}>
@@ -86,6 +97,9 @@ function RepoList({ projects, setProjectID, settings, listMode, setListMode, t, 
       {displayTitle && <Typography variant="h1" className={classes.title}>{t('title')}</Typography>}
       {displaySubtitle && <Typography variant="subtitle1">{t('description')}</Typography>}
       <ShareButtons {...{ settings, t, titol: t('title'), descripcio: t('description'), imatge: logo, link: window.location.href }} />
+      <Paper className={classes['selectProjects']}>
+        <SelectProjects {...{ settings, t, projects, filters, setFilters }} />
+      </Paper>
       <div className={classes['infoBar']}>
         <ToggleButtonGroup
           className={classes['viewMode']}
@@ -102,10 +116,10 @@ function RepoList({ projects, setProjectID, settings, listMode, setListMode, t, 
             <List />
           </ToggleButton>
         </ToggleButtonGroup>
-        <Typography variant="body2" className={classes['projectCount']}>{t('projects_count', { count: projects.length })}</Typography>
+        <Typography variant="body2" className={classes['projectCount']}>{t('projects_count', { count: filteredProjects.length })}</Typography>
       </div>
-      {(listMode && <PaginatedList {...{ projects, setProjectID, settings, t }} />)
-        || <CardsMosaic {...{ projects, setProjectID, settings, t }} />
+      {(listMode && <PaginatedList {...{ projects: filteredProjects, setProjectID, settings, t }} />)
+        || <CardsMosaic {...{ projects: filteredProjects, setProjectID, settings, t }} />
       }
     </div >
   );
